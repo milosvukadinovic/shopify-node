@@ -4,23 +4,23 @@ const shops = [
 ]
 
 
-const baseUrlFor = (shop) => (
+const baseUrlForShop = (shop) => (
     "https://"+shop.api_key+":"+shop.api_secret +"@"+shop.name+".myshopify.com"
 );
 
 const urlForInventory = (shop,itemID) => (
-    baseUrlFor(shop) + "/admin/api/2020-01/inventory_items/"+itemID+".json"
+    baseUrlForShop(shop) + "/admin/api/2020-01/inventory_items/"+itemID+".json"
 );
 
 const urlForProducts = (shop) => (
-    baseUrlFor(shop) + "/admin/api/2020-01/products.json"
+    baseUrlForShop(shop) + "/admin/api/2020-01/products.json"
 );
 
 const urlForLevels = (shop) => (
-    baseUrlFor(shop) +"/admin/api/2020-01/inventory_levels/set.json"
+    baseUrlForShop(shop) +"/admin/api/2020-01/inventory_levels/set.json"
 );
 
-module.exports = { shops, baseUrlFor, urlForInventory, urlForProducts, urlForLevels };
+module.exports = { shops, baseUrlForShop, urlForInventory, urlForProducts, urlForLevels };
 
 
 

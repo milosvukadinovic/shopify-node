@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
 const { shops } = require("./src/config");
-const { syncStore } = require('./src/request_handlers');
+const { syncTwoShopsByItem } = require("./src/main");
 
 app.use(bodyParser.json());
 app.use(
@@ -15,15 +15,16 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded());
 
-
 app.all("/store/:shopName/api/v2", (req, res) => {
-  const currentShopName = req.params.shopName;
-  const currentShop = shops.find(shop => shop.name == currentShopName);
-  const item = { id: req.body.inventory_item_id, available: req.body.available };
+  const currentShop = shops.find(shop => shop.name == req.params.shopName);
+  const item = {
+    id: req.body.inventory_item_id,
+    available: req.body.available
+  };
   shops
-    .filter(shop => shop.name != currentShopName)
-    .forEach(shop => syncStore(item, currentShop, shop));
-    res.send('Done');
+    .filter(shopToSync => shopToSync.name != currentShop.name)
+    .forEach(shopToSync => syncTwoShopsByItem(item, currentShop, shopToSync));
+  res.send("Done");
 });
 
 app.listen(PORT, () => {
