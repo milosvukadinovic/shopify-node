@@ -12,6 +12,7 @@ const findMatchingSku = (products, productSku, shopToSync, item) => {
         }
       }
     }
+    reject();
   });
 };
 
