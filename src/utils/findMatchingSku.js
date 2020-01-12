@@ -12,7 +12,9 @@ const findMatchingSku = (products, productSku, shopToSync, item) => {
         }
       }
     }
-    reject();
+    if(typeof inventoryItemID !== 'undefined'){
+      reject();
+    }
   });
 };
 
