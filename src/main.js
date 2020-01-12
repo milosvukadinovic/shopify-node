@@ -1,9 +1,9 @@
-const { grabCurrentItemSku } = require("./helper_methods/grabCurrentItemSku");
+const { grabCurrentItemSku } = require("./utils/grabCurrentItemSku");
 const {
   getAllProductsFromRecieverShop
-} = require("./helper_methods/getAllProductsFromRecieverShop");
-const { findMatchingSku } = require("./helper_methods/findMatchingSku");
-const { setInventoryLevel } = require("./helper_methods/setInventoryLevel");
+} = require("./utils/getAllProductsFromRecieverShop");
+const { findMatchingSku } = require("./utils/findMatchingSku");
+const { setInventoryLevel } = require("./utils/setInventoryLevel");
 
 const syncTwoShopsByItem = async (item, currentShop, shopToSync) => {
   let productSku;

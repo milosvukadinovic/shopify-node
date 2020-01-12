@@ -11,7 +11,7 @@ Connecting(synchronizing) two Shopify stores with Webhooks and APIs.
 
 - npm install
 
-- Create .env file and add credentials.
+- Create .env file and add credentials. (SHOPIFY_API_KEY,SHOPIFY_API_SECRET)
 
 - Sync credentials and store information in config.js
 
