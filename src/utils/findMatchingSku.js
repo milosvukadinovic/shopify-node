@@ -1,21 +1,9 @@
-const findMatchingSku = (products, productSku, shopToSync, item) => {
-  return new Promise((resolve, reject) => {
-    for (let product in products) {
-      for (let variant in products[product].variants) {
-        if (products[product].variants[variant].sku == productSku) {
-          const inventoryItemID =
-            products[product].variants[variant].inventory_item_id;
-          if (!isNaN(shopToSync.location_id) && !isNaN(inventoryItemID)) {
-            resolve(inventoryItemID);
-          }
-          break;
-        }
-      }
-    }
-    if(typeof inventoryItemID !== 'undefined'){
-      reject();
-    }
-  });
+const findMatchingSku = (products, productSku) => {
+  for (let product in products) {
+    let inventoryItemID = products[product].variants.find(variant => variant.sku == productSku)
+    return inventoryItemID.inventory_item_id;
+  }
 };
 
 module.exports = { findMatchingSku };
+

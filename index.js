@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
 const { shops } = require("./src/config");
-const { syncTwoShopsByItem } = require("./src/main");
+const { syncTwoShopsByItem } = require("./src/shopService");
 
 app.use(bodyParser.json());
 app.use(

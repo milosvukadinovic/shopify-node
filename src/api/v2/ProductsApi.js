@@ -1,17 +1,19 @@
 const { urlForProducts } = require("../../config");
 const axios = require("axios");
 
-const getAllProductsApi = shopToSync => {
+const getAll = shopToSync => {
   return axios
     .get(urlForProducts(shopToSync), {
       params: {
         json: true
       }
     })
-    .then(response => response)
+    .then(response => {
+      return response.data.products;
+    })
     .catch(error => {
       throw error;
     });
 };
 
-module.exports = { getAllProductsApi };
+module.exports = { getAll };
